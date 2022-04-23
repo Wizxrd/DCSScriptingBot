@@ -1,2 +1,2 @@
 @echo off
-reqs\luvit.exe "./core/bot.lua"
+deps\luvit.exe "./core/bot.lua"

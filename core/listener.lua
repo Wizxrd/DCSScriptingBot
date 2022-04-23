@@ -12,7 +12,7 @@ local base = _G
 local handler = require("../core/handler")
 
 local dgram = require('dgram')
-local json = require("../reqs/json")
+local json = require("../core/json")
 
 local bot = nil
 local botPort = nil

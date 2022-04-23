@@ -1,6 +1,6 @@
 local util = {}
 
-function util.filesize(path)
+function util.getFileSize(path)
     local size = false
     local file = io.open(path, "r")
     if file then
@@ -12,7 +12,7 @@ function util.filesize(path)
     return size
 end
 
-function util.file_exists(name)
+function util.fileExists(name)
     local f = io.open(name, "r")
     if f ~= nil then
         f:close()

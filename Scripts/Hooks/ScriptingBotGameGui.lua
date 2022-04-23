@@ -8,7 +8,6 @@ local json = loadfile(lfs.currentdir() .. "Scripts\\json.lua")()
 package.path  = package.path..";.\\LuaSocket\\?.lua;"
 package.cpath = package.cpath..";.\\LuaSocket\\?.dll;"
 local socket = require("socket")
-
 local bot = {}
 bot.UDPSendSocket = socket.udp()
 bot.UDPSendSocket:settimeout(0)
@@ -76,3 +75,5 @@ if DCS.isServer() then
 	DCS.setUserCallbacks(bot)
     log.write('DCSScriptingBot', log.DEBUG, 'Loaded DCSScriptingBot Callbacks')
 end
+
+return bot

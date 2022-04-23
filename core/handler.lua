@@ -10,7 +10,7 @@ handles discord events and socket received messages as call back functions
 local base = _G
 
 local util = require("../core/util")
-local json = require("../reqs/json")
+local json = require("../core/json")
 local dgram = require('dgram')
 
 local port = 6666

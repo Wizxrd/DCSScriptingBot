@@ -20,13 +20,12 @@ local CYAN    = 36
 -- local WHITE   = 37
 
 local config = {
-	{ name = "error", color = 31, levelStr = "[ERROR]   "},
-	{ name = "warn",  color = 33, levelStr = "[WARN]    "},
-	{ name = "info",  color = 32, levelStr = "[INFO]    "},
-	{ name = "debug", color = 36, levelStr = "[DEBUG]   "},
-	--{ name = "trace", color = 34, levelStr = "[TRACE]   "},
-	--{ name = "fatal", color = 35, levelStr = "[FATAL]   "},
-  }
+	{ name = "error", color = 31, levelStr = "[ERROR]"},
+	{ name = "warn",  color = 33, levelStr = "[WARN] "},
+	{ name = "info",  color = 32, levelStr = "[INFO] "},
+	{ name = "debug", color = 36, levelStr = "[DEBUG]"},
+	{ name = "trace", color = 34, levelStr = "[TRACE]"},
+}
 
 do
 	local bold = 1
@@ -42,15 +41,6 @@ function Logger:__init(level, dateTime, file)
 	self._dateTime = dateTime
 	self._file = file and openSync(file, 'a')
 end
-
-local modes = {
-	{ name = "error", color = 31, levelStr = "[ERROR]   "},
-	{ name = "warn",  color = 33, levelStr = "[WARN]    "},
-	{ name = "info",  color = 32, levelStr = "[INFO]    "},
-	{ name = "debug", color = 36, levelStr = "[DEBUG]   "},
-	--{ name = "trace", color = 34, levelStr = "[TRACE]   "},
-	--{ name = "fatal", color = 35, levelStr = "[FATAL]   "},
-  }
 
 for i, x in ipairs(config) do
 	Logger[x.name] = function(self, text, ...)
