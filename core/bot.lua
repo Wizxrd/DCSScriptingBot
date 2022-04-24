@@ -9,16 +9,16 @@ creates a new instance of a bot which will automatically configure itself based 
 
 local major = 0
 local minor = 0
-local patch = 3
+local patch = 4
 
 local base = _G
 
 local listener = require("../core/listener")
-
 local settings = require("../config/settings.lua")
 local events = require("../core/events.lua")
 local commands = require("../core/commands.lua")
 
+local fs = require("fs")
 local util = require("../core/util.lua")
 
 local discord = require("discordia")
@@ -45,30 +45,56 @@ local scripts = {
     },
 }
 
-local function copyFile(name, from, to)
-    local fromSize = util.getFileSize(from)
-    local toSize = util.getFileSize(to)
-    if util.fileExists(from) then
-        if fromSize ~= toSize then
-            logger:info("copying %s.lua into Saved Games\\Scripts...", name)
-            local fromFile, fromFileError = io.open(from, "r")
-            if not fromFile then logger:error("copyFile() | fromFile: %s", fromFileError) return false, fromFileError end
-            local fromContent = fromFile:read("*a")
-            fromFile:close()
+local function writeFile(name, origin, destination)
+    logger:debug("copying %s.lua into:", name)
+    logger:debug("%s", destination)
+    local originFile, originError = fs.openSync(origin, "r")
+    if not originFile then
+        local errorStr = string.format("writeFile() | origin: %s", originError)
+        return false, errorStr
+    end
+    local originContent = fs.readSync(originFile)
+    fs.closeSync(originFile)
 
-            local toFile, toFileError = io.open(to, "w")
-            if not toFile then logger:error("copyFile() | toFile: %s", toFileError) return false, toFileError end
-            toFile:write(fromContent)
-            toFile:close()
+    local destinationFile, destinationError = fs.openSync(destination, "w")
+    if not destinationFile then
+        local errorStr = string.format("writeFile() | destination: %s", destinationError)
+        return false, errorStr
+    end
+    fs.writeSync(destinationFile, 0, originContent)
+    fs.closeSync(destinationFile)
+    logger:debug("%s.lua successfully copied into:", name)
+    logger:debug("%s", destination)
+    return true
+end
 
-            if util.getFileSize(from) ~= util.getFileSize(to) then
-                return false, string.format("%s.lua wasn't properly copied", name)
+local function initCopy(name, origin, destination)
+    if fs.existsSync(origin) then
+        local newDestination = false
+        if not fs.existsSync(destination) then
+            local destinationFile = fs.openSync(destination, "w")
+            fs.closeSync(destinationFile)
+            newDestination = true
+        end
+        local originEpoch = fs.statSync(origin).mtime.sec
+        local destinationEpoch = fs.statSync(destination).mtime.sec
+
+        if not newDestination then
+            if originEpoch > destinationEpoch then
+                local success, errorString =  writeFile(name, origin, destination)
+                if not success then
+                    return false, errorString
+                end
             end
         else
-            return false, string.format("%s.lua had no new changes to apply", name)
+            local success, errorString =  writeFile(name, origin, destination)
+            if not success then
+                return false, errorString
+            end
         end
         return true
     end
+    return false,  string.format("initCopy() | %s.lua could not be found in bot directory!", name)
 end
 
 local bot = {
@@ -129,12 +155,9 @@ end
 function bot:initScripts()
     logger:info("copying scripts to saved games...")
     for name, script in pairs(scripts) do
-        local success, debug = copyFile(name, script.origin, script.dest)
+        local success, errorStr = initCopy(name, script.origin, script.dest)
         if not success then
-            logger:debug("bot:initScripts() | %s", debug)
-        else
-            logger:debug("%s.lua has been copied into:", name)
-            logger:debug("%s", script.dest)
+            logger:error("bot:initScripts() | %s", errorStr)
         end
     end
 end
