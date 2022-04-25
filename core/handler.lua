@@ -21,23 +21,6 @@ socket:bind(0, host)
 
 local bot = nil
 
-local function hasRole(requiredRole, memberRoles)
-    local isRole = false
-    memberRoles:forEach(function(role)
-        if role.name == requiredRole then
-            isRole = true
-        end
-    end)
-    return isRole
-end
-
-local function inChannel(commandChannel, channel)
-    if commandChannel == channel.id then
-        return true
-    end
-    return false
-end
-
 local function sendToDCS(json_table)
     --log[bot.settings.logLevel]("sendToDCS() | sending json to - port: %d | host: %s", port, host)
     socket:send(json_table, port, host)
@@ -71,9 +54,11 @@ end
 
 function handler.restart(message)
     --log[bot.settings.logLevel]("handler.restart() | command received")
-    local member = message.member
-    local memberRoles = message.member.roles
-    if hasRole(bot.settings.adminRole, memberRoles) then
+    if not message.guild then return end
+    local channel = message.channel
+    local member = message.guild:getMember(message.author)
+    if member:hasRole(bot.settings.adminRole) and channel.id == bot.settings.adminChannel then
+        print"is admin and is in admin channel"
         --log[bot.settings.logLevel]("handler.restart() | restarting DCSScriptingBot as %s", bot.client.user.tag)
         os.execute("bot.bat")
     end
@@ -81,16 +66,13 @@ end
 
 function handler.purge(message)
     --log[bot.settings.logLevel]("handler.purge() | command received")
-    local member = message.member
-    local memberRoles = message.member.roles
-    if hasRole(bot.settings.adminRole, memberRoles) then
+    if not message.guild then return end
+    local channel = message.channel
+    local member = message.guild:getMember(message.author)
+    if member:hasRole(bot.settings.adminRole) and channel.id == bot.settings.adminChannel then
         local content = message.content
-        local channel = message.channel
         local deleteCount = tonumber(content:sub(8))
         if deleteCount > 100 then
-            --local timed = deleteCount/100 -- 125/100
-            --local modTime = timed % 1 -- 0.25
-            --local total = timed - modTime -- 1.25 - 0.25
             for i = 1, 1 do
                 local messages = channel:getMessages(100)
                 channel:bulkDelete(messages)
@@ -107,10 +89,10 @@ end
 
 function handler.botlog(message)
     --log[bot.settings.logLevel]("handler.botlog() | command received")
-    local member = message.member
-    local memberRoles = message.member.roles
-    if hasRole(bot.settings.adminRole, memberRoles) then
-        local channel = message.channel
+    if not message.guild then return end
+    local channel = message.channel
+    local member = message.guild:getMember(message.author)
+    if member:hasRole(bot.settings.adminRole) and channel.id == bot.settings.adminChannel then
         --log[bot.settings.logLevel]("handler.botlog() | replied with bot.log")
         channel:send({file = "logs/bot.log"})
     end
@@ -118,9 +100,10 @@ end
 
 function handler.doscript(message)
     --log[bot.settings.logLevel]("handler.doscript() | command received")
-    local member = message.member
-    local memberRoles = message.member.roles
-    if hasRole(bot.settings.adminRole, memberRoles) then
+    if not message.guild then return end
+    local channel = message.channel
+    local member = message.guild:getMember(message.author)
+    if member:hasRole(bot.settings.adminRole) and channel.id == bot.settings.adminChannel then
         local content = message.content
         local messageTable = {}
         messageTable.command = "doscript"
@@ -133,9 +116,10 @@ end
 
 function handler.launch(message)
     --log[bot.settings.logLevel]("handler.launch() | command received")
-    local member = message.member
-    local memberRoles = message.member.roles
-    if hasRole(bot.settings.adminRole, memberRoles) then
+    if not message.guild then return end
+    local channel = message.channel
+    local member = message.guild:getMember(message.author)
+    if member:hasRole(bot.settings.adminRole) and channel.id == bot.settings.adminChannel then
         --log[bot.settings.logLevel]("handler.launch() | launching dcs from %s", bot.settings.pathToDCS.."\\"..bot.settings.dcsName)
         os.execute("bats/dcs.bat")
     end

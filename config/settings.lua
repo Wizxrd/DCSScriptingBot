@@ -1,7 +1,7 @@
 local settings = {
     --[[ bot configuration ]]--
     -- note the format for pathToDCS and dcsName, it is important they are correct so a dcs.bat can be created to start dcs on discord command
-    ["commandPrefix"] = "~",
+    ["commandPrefix"] = ".",
     ["botToken"] = "", -- DONT FORGET TO REMOVE BEFORE PUSH!
     ["botPort"] = 10081,
     ["botHost"] = "0.0.0.0",
@@ -45,7 +45,7 @@ local settings = {
     ["logLimit"] = 10,
 
     -- -- [roles] --
-    ["adminRole"] = "daimyo",
+    ["adminRole"] = "937857260800073729",
     ["userRole"] = "user",
 
 

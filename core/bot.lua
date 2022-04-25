@@ -9,7 +9,7 @@ creates a new instance of a bot which will automatically configure itself based 
 
 local major = 0
 local minor = 0
-local patch = 4
+local patch = 5
 
 local base = _G
 
