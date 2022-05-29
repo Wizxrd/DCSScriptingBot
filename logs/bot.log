@@ -1,60 +1,28 @@
-2022-04-24 19:50:00 | [INFO]  | constructing DCSScriptingBot...
-2022-04-24 19:50:00 | [DEBUG] | bot:new() | bot objected has been constructed
-2022-04-24 19:50:00 | [INFO]  | initializing DCSScriptingBot...
-2022-04-24 19:50:00 | [INFO]  | initializing discord event callbacks...
-2022-04-24 19:50:00 | [DEBUG] | bot:initDiscordEvents() | initialized event: onMessageSend
-2022-04-24 19:50:00 | [DEBUG] | bot:initDiscordEvents() | initialized event: onReady
-2022-04-24 19:50:00 | [DEBUG] | bot:initDiscordEvents() | initialization successful
-2022-04-24 19:50:00 | [INFO]  | initializing dcs.bat launch script...
-2022-04-24 19:50:00 | [DEBUG] | bot:initDCSBat() | dcs.bat has been initialized
-2022-04-24 19:50:00 | [INFO]  | copying scripts to saved games...
-2022-04-24 19:50:00 | [DEBUG] | bot:initailize() | all initializations complete
-2022-04-24 19:50:00 | [INFO]  | starting up DCSScriptingBot...
-2022-04-24 19:50:00 | [INFO]  | Discordia 2.9.2
-2022-04-24 19:50:00 | [INFO]  | Connecting to Discord...
-2022-04-24 19:50:01 | [DEBUG] | 200 - OK : GET https://discord.com/api/v7/users/@me
-2022-04-24 19:50:01 | [INFO]  | Authenticated as Scripting Bot#3015
-2022-04-24 19:50:01 | [INFO]  | Launching shard 0 (1 out of 1)...
-2022-04-24 19:50:01 | [INFO]  | initailizing listening socket...
-2022-04-24 19:50:01 | [DEBUG] | listener.initSocket() | initialization successful
-2022-04-24 19:50:01 | [INFO]  | handler is now accepting commands
-2022-04-24 19:50:01 | [DEBUG] | listening on port: 10081 | host: 0.0.0.0...
-2022-04-24 19:50:01 | [INFO]  | DCSSriptingBot is now ready as Scripting Bot#3015!
-2022-04-24 19:51:03 | [DEBUG] | listener:on() | message received from dcs
-2022-04-24 19:51:03 | [DEBUG] | listener:on() | callback: handler.sendMessage
-2022-04-24 19:51:03 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:51:03 | [DEBUG] | listener.onMessageSend() | no callback command was found
-2022-04-24 19:51:03 | [DEBUG] | 200 - OK : POST https://discord.com/api/v7/channels/964670713745252362/messages
-2022-04-24 19:51:38 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:51:38 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:51:47 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:51:47 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:51:55 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:51:55 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:52:02 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:52:02 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:52:36 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:52:36 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:52:44 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:52:44 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:52:49 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:52:49 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:53:00 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:53:00 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:53:31 | [DEBUG] | listener:on() | message received from dcs
-2022-04-24 19:53:31 | [DEBUG] | listener:on() | callback: handler.sendMessage
-2022-04-24 19:53:31 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:53:31 | [DEBUG] | listener.onMessageSend() | no callback command was found
-2022-04-24 19:53:31 | [DEBUG] | 200 - OK : POST https://discord.com/api/v7/channels/964670713745252362/messages
-2022-04-24 19:53:51 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:53:51 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:53:56 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:53:56 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 19:54:26 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 19:54:26 | [DEBUG] | listener.onMessageSend() | callback command: doscript found
-2022-04-24 20:19:53 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 20:19:53 | [DEBUG] | listener.onMessageSend() | no callback command was found
-2022-04-24 20:20:17 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 20:20:17 | [DEBUG] | listener.onMessageSend() | no callback command was found
-2022-04-24 20:20:18 | [DEBUG] | listener.onMessageSend() | looking for callback command
-2022-04-24 20:20:18 | [DEBUG] | listener.onMessageSend() | no callback command was found
+2022-05-29 10:03:52 | [ERROR] | error message
+2022-05-29 10:03:52 | [WARN]  | warn message
+2022-05-29 10:03:52 | [INFO]  | info message
+2022-05-29 10:03:52 | [DEBUG] | debug message
+2022-05-29 10:03:52 | [INFO]  | constructing DCSScriptingBot...
+2022-05-29 10:03:52 | [DEBUG] | bot:new() | bot objected has been constructed
+2022-05-29 10:03:52 | [INFO]  | initializing DCSScriptingBot...
+2022-05-29 10:03:52 | [INFO]  | initializing discord event callbacks...
+2022-05-29 10:03:52 | [DEBUG] | bot:initDiscordEvents() | initialized event: onMessageSend
+2022-05-29 10:03:52 | [DEBUG] | bot:initDiscordEvents() | initialized event: onReady
+2022-05-29 10:03:52 | [DEBUG] | bot:initDiscordEvents() | initialization successful
+2022-05-29 10:03:52 | [INFO]  | initializing dcs.bat launch script...
+2022-05-29 10:03:52 | [DEBUG] | bot:initDCSBat() | dcs.bat has been initialized
+2022-05-29 10:03:52 | [INFO]  | copying scripts to saved games...
+2022-05-29 10:03:52 | [DEBUG] | bot:initailize() | all initializations complete
+2022-05-29 10:03:52 | [INFO]  | starting up DCSScriptingBot...
+2022-05-29 10:03:52 | [INFO]  | Discordia 2.9.2
+2022-05-29 10:03:52 | [INFO]  | Connecting to Discord...
+2022-05-29 10:03:52 | [DEBUG] | 200 - OK : GET https://discord.com/api/v7/users/@me
+2022-05-29 10:03:52 | [INFO]  | Authenticated as Scripting Bot#3015
+2022-05-29 10:03:52 | [DEBUG] | 200 - OK : GET https://discord.com/api/v7/gateway/bot
+2022-05-29 10:03:52 | [DEBUG] | 200 - OK : GET https://discord.com/api/v7/oauth2/applications/@me
+2022-05-29 10:03:52 | [INFO]  | Launching shard 0 (1 out of 1)...
+2022-05-29 10:03:52 | [INFO]  | initailizing listening socket...
+2022-05-29 10:03:52 | [DEBUG] | listener.initSocket() | initialization successful
+2022-05-29 10:03:52 | [INFO]  | handler is now accepting commands
+2022-05-29 10:03:52 | [DEBUG] | listening on port: 10081 | host: 0.0.0.0...
+2022-05-29 10:03:52 | [INFO]  | DCSSriptingBot is now ready as Scripting Bot#3015!

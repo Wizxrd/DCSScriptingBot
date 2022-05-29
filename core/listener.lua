@@ -15,8 +15,6 @@ local dgram = require('dgram')
 local json = require("../core/json")
 
 local bot = nil
-local botPort = nil
-local botHost = nil
 
 local socket = dgram.createSocket("udp4")
 
@@ -25,7 +23,7 @@ setmetatable(listener, {__index = socket})
 
 function listener.initSocket()
     bot.logger:info("initailizing listening socket...")
-    listener:bind(botPort, botHost)
+    listener:bind(bot.settings.botPort, bot.settings.botHost)
     listener:on("message", function(message)
         bot.logger:debug("listener:on() | message received from dcs")
         local messageTable = json.decode(message)
@@ -38,21 +36,19 @@ end
 
 function listener.onReady()
     bot = base.ScripingBot
-    botPort = bot.settings.botPort
-    botHost = bot.settings.botHost
     listener.initSocket()
     handler.onReady()
-    bot.logger:debug("listening on port: %d | host: %s...", botPort, botHost)
+    bot.logger:debug("listening on port: %d | host: %s...", bot.settings.botPort, bot.settings.botHost)
     bot.logger:info("DCSSriptingBot is now ready as %s!", bot.client.user.tag)
     --log[bot.settings.logLevel]("DCSSriptingBot is now ready as %s", bot.client.user.tag)
     --log[bot.settings.logLevel]("%s listening on port: %d | host: %s", bot.client.user.tag, botPort, botHost)
 end
 
 function listener.onMessageSend(message)
-    bot.logger:debug("listener.onMessageSend() | looking for callback command")
     local found = false
     local content = message.content
     if content:sub(1,1) == bot.settings.commandPrefix then
+        bot.logger:debug("listener.onMessageSend() | has prefix, looking for command")
         for command, callback in pairs(handler) do
             if content:find(command) and type(callback) == "function" then
                 bot.logger:debug("listener.onMessageSend() | callback command: %s found", command)
@@ -61,8 +57,8 @@ function listener.onMessageSend(message)
                 break
             end
         end
+        if not found then bot.logger:debug("listener.onMessageSend() | no callback command was found") end
     end
-    if not found then bot.logger:debug("listener.onMessageSend() | no callback command was found") end
 end
 
 return listener
