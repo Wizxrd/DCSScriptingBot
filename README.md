@@ -1,3 +1,3 @@
 # DCSScriptingBot
-![](https://komarev.com/ghpvc/?
-username=Wizxrd&color=blue)
+![COV1D-19 github stats](https://github=
+readme-stats.vercel.app/api?username=Wizxrd&show_icons=true&theme=radical)
